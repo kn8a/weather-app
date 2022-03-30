@@ -6,6 +6,7 @@ body {
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     background-image: url('https://images.unsplash.com/photo-1523004825-62eb3b5a6738?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2370&q=80');
     background-size: cover;
+    background-repeat: no-repeat;
     gap: 3rem;
     font-family: 'Roboto', sans-serif;
 }
@@ -17,7 +18,7 @@ form{
 }
 
 .searchbar {
-    margin-top: 2vh;
+    margin-top: 3vh;
     grid-column: 3/4;
     border: 0px red solid;
     padding: 1.5vh 1vw;
@@ -36,12 +37,7 @@ form{
     grid-template-columns: 1fr 1fr;
     padding: 2vh 2vw;
     border-radius: 30px;
-    /* From https://css.glass */
-background: rgba(255, 255, 255, 0.623);
-border-radius: 16px;
-box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-backdrop-filter: blur(8.3px);
--webkit-backdrop-filter: blur(8.3px);
+
 
 }
 
@@ -107,11 +103,7 @@ background-color: white;
 padding: 1vh;
 border-radius: 30px;
 /* From https://css.glass */
-background: rgba(255, 255, 255, 0.623);
-border-radius: 16px;
-box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-backdrop-filter: blur(8.3px);
--webkit-backdrop-filter: blur(8.3px);
+
 text-align: center;
 }
 
@@ -135,4 +127,14 @@ text-align: center;
     flex-direction: column;
     justify-content: space-around;
     
+}
+
+
+.glass {
+/* From https://css.glass */
+background: rgba(255, 255, 255, 0.623);
+border-radius: 30px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(4px);
+-webkit-backdrop-filter: blur(4px);
 }

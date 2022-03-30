@@ -17,7 +17,7 @@ async function getWeather(location, unit){
     const lon = data.coord.lon;
     const lat = data.coord.lat;
     const localTime = await getLocalTime(lon,lat);
-    log(data);
+    //log(data);
     parseData(data, localTime);
 }
 
