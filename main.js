@@ -1,17 +1,14 @@
-//https://api.openweathermap.org/data/2.5/weather?q=london&units=metric&APPID=8e1dc4b03b256aff4e11d3c73b16bf4d
-
-//&units=imperial
-
-//const location = document.getElementById('location');
 const btn = document.getElementById('submit');
 const loc = document.getElementById('loc');
+
 log=console.log;
 
-btn.addEventListener('click', () => {
+btn.addEventListener('click', (e) => {
     getWeather(loc.value, 'metric');
+    e.preventDefault()
 })
 
-
+document.onload = getWeather('london', 'metric')
 
 
 async function getWeather(location, unit){
@@ -20,16 +17,16 @@ async function getWeather(location, unit){
     const lon = data.coord.lon;
     const lat = data.coord.lat;
     const localTime = await getLocalTime(lon,lat);
-    console.log(data, localTime)
+    log(data);
     parseData(data, localTime);
 }
 
 async function getLocalTime(lon,lat) {
     const response = await fetch(`https://api.ipgeolocation.io/timezone?apiKey=cc8c96fca3774daaa7fe5c898420b303&lat=${lat}&long=${lon}`);
     const data = await response.json();
-    //log(data.date_time_txt);
     return data;
 }
+
 
 function parseData(data, localTime) {
     const windDir = windDegree(data.wind.deg);
@@ -53,7 +50,9 @@ function parseData(data, localTime) {
     const weatherCodeND = data.weather[0].icon;
     const weatherId = data.weather[0].id
     const nightDay = weatherCodeND.slice(-1);
-
+    const desc = data.weather[0].description;
+    const pressure = Math.round(data.main.pressure, 0);
+    const country = data.sys.country;
     function windDegree(degrees){
         const directions = ['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW'];
         degrees = degrees * 8 / 360;
@@ -62,10 +61,26 @@ function parseData(data, localTime) {
         return(directions[degrees])
     }
     
-    log(windDir, windSpeed, temp, tempH, tempL, tempFeel, humidity, weekDay, AmPm, time, day, month, year, cityName, nightDay, weatherId);
+
+    populateData(windDir, desc, windSpeed, temp, tempH, tempL, tempFeel, humidity, weekDay, AmPm, time, day, month, year, cityName, nightDay, weatherId, pressure, country);
 
 }
 
+function populateData(windDir, desc, windSpeed, temp, tempH, tempL, tempFeel, humidity, weekDay, AmPm, time, day, month, year, cityName, nightDay, weatherId, pressure, country){
+    const img = document.getElementById('weather-img')
+    img.src = `./weather-icons/${iconMap[nightDay][weatherId]}.svg`
+    document.getElementById('condition').textContent = desc;
+    document.getElementById('weekday').textContent = weekDay;
+    document.getElementById('current-time').textContent = time + ' ' + AmPm;
+    document.getElementById('date').textContent = `${day}/${month}/${year}`;
+    document.getElementById('city').textContent = `${cityName}, ${country}`;
+    document.getElementById('temp').textContent = `Current: ${temp}`;
+    document.getElementById('feels').textContent = `Feels like: ${tempFeel}`;
+    document.getElementById('wind-dir').textContent = `Direction: ${windDir}`;
+    document.getElementById('wind-speed').textContent = `Speed: ${windSpeed}`;
+    document.getElementById('humidity').textContent = `Humidity: ${humidity}%`;
+    document.getElementById('pressure').textContent = `Pressure: ${pressure}`;
+}
 
 
 

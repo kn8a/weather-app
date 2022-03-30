@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;500;700&display=swap');
+
+body {
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    background-image: url('https://images.unsplash.com/photo-1523004825-62eb3b5a6738?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2370&q=80');
+    background-size: cover;
+    gap: 3rem;
+    font-family: 'Roboto', sans-serif;
+}
+
+form{
+    display: grid;
+    grid-column: 1fr auto;
+    justify-items: center;
+}
+
+.searchbar {
+    margin-top: 2vh;
+    grid-column: 3/4;
+    border: 0px red solid;
+    padding: 1.5vh 1vw;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    background-color: white;
+    border-radius: 30px;
+    margin-bottom: 2vh;
+}
+
+.main {
+    grid-column: 2/5;
+    background-color: rgb(255, 255, 255);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 2vh 2vw;
+    border-radius: 30px;
+    /* From https://css.glass */
+background: rgba(255, 255, 255, 0.623);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(8.3px);
+-webkit-backdrop-filter: blur(8.3px);
+
+}
+
+.img {
+    grid-column: 1/2;
+    justify-items: center;
+    display: grid;
+    place-items: center;
+}
+
+.img img{
+    max-width: 300px;
+}
+
+button {
+    background-color: transparent;
+    border: 0;
+    grid-column: 2;
+    padding: 0;
+    margin: 0;
+}
+
+button:hover {
+    filter: brightness(1.2);
+}
+
+
+input {
+    grid-column: 1;
+    border-radius: 20px;
+    padding: 8px 16px;
+    border: 1px darkcyan solid;
+    outline: 0;
+}
+
+input:focus, input:active {
+    border: 1px darkcyan solid;
+}
+
+#city {
+    font-size: 3rem;
+}
+
+#condition {
+    font-size: 1.3rem;
+    color: darkcyan;
+}
+
+.smalldiv1 {
+    grid-column: 2/3;
+}
+
+.smalldiv2 {
+    grid-column: 3/4;
+}
+
+.smalldiv3 {
+    grid-column: 4/5;
+}
+
+.small {
+background-color: white;
+padding: 1vh;
+border-radius: 30px;
+/* From https://css.glass */
+background: rgba(255, 255, 255, 0.623);
+border-radius: 16px;
+box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+backdrop-filter: blur(8.3px);
+-webkit-backdrop-filter: blur(8.3px);
+text-align: center;
+}
+
+.title {
+    font-size: 2rem;
+    text-align: center;
+    color: lightslategray;
+}
+
+.info {
+    font-size: 1.3rem;
+}
+
+.small img{
+    max-width: 150px;
+}
+
+.location {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    
+}
